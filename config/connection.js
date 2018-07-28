@@ -5,7 +5,7 @@ var connection=mysql.createConnection({
     host:"localhost",
     user:"root",
     password:"uoft18",
-    database:["appointmentsUMD","doctorsUMD","patientsUMD"],
+    database:"mainUMD",
     multipleStatements:true
 });
 
