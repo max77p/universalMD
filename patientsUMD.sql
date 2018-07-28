@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS patientsUMD;
+
+CREATE DATABASE patientsUMD;
+
+USE patientsUMD;
+
