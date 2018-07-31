@@ -14,6 +14,7 @@ var exphbs=require("express-handlebars");
 app.engine("handlebars",exphbs({defaultLayout:"main"}));
 app.set("view engine","handlebars");
 
+//import all routes
 var routes =require("./controllers/mdController.js");
 app.use(routes);
 
