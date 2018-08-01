@@ -1,0 +1,46 @@
+i {
+    font-style: italic;
+    /* font-size: 4em; */
+    color: #4aaaa5;
+    padding: 5px;
+}
+
+h1,
+h2,
+h5 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #4aaaa5;
+    border-bottom: 3px solid #dddddd;
+}
+
+.carouselStyle {
+    max-height: 30em;
+    height: 100%;
+}
+
+.carouselStyle img {
+    opacity: 0.2;
+}
+
+.description{
+  font-size:13px;
+}
+
+.pdBtns {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.aboutImg,.content{
+  width:50%;
+}
+
+.aboutImg img{
+  width:100%;
+}
