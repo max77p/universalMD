@@ -1,31 +1,83 @@
 <form action="/api/data" method="POST">
 
-        What's your name?
-        <br>
-        <input type="text" name="firstname" value="">
-        <br>
-        What's your email address?
-        <br>
-        <input type="text" name="email" value="">
-        <br>
-        What's your location?
-        <br>
-        <input type="text" name="location" value="">
-        <br>
-        What're your main symptoms?
-        <br>
-            <input type="checkbox" name="symptom1" value="Cough">Cough<br>
-            <input type="checkbox" name="symptom2" value="Sore Throat">Sore Throat<br>
-            <input type="checkbox" name="symptom3" value="Fatigue">Fatigue<br>
-            <input type="checkbox" name="symptom4" value="Fever">Fever<br>
+    What's your name?
+    <br>
+    <input type="text" name="name" value="" id="nameInput">
+    <br> What's your email address?
+    <br>
+    <input type="text" name="email" value="" id="emailInput">
+    <br> What's your location?
+    <br>
+    <input type="text" name="location" value="" id="locationInput">
+    <br>
+    <!-- one is required -->
+    What're your main symptoms?
+    <br>
 
-        <br>
-        Do you prefer a female or male doctor?
-        <br>
-        <input type="radio" name="gender" value="male" checked> Male<br>
-        <input type="radio" name="gender" value="female"> Female<br>
-        
+    <input type="checkbox" name="symptom1" value="Cough">Cough
+    <br>
+    <input type="checkbox" name="symptom2" value="Sore Throat">Sore Throat
+    <br>
+    <input type="checkbox" name="symptom3" value="Fatigue">Fatigue
+    <br>
+    <input type="checkbox" name="symptom4" value="Fever">Fever
+    <br>
+
+    <br> Do you prefer a female or male doctor?
+    <br>
+
+    <input type="radio" name="gender" value="male" checked> Male
+    <br>
+    <input type="radio" name="gender" value="female"> Female
+    <br>
 
 
-        <input type="submit" value="Submit">
-      </form>
+    <input type="submit" value="Submit" id="reqTest">
+
+
+</form>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#reqTest').click(function (ev) {
+
+            //prevent submit from submitting webform
+            ev.preventDefault();
+
+            //checking length of input fields
+            checkboxVal = $("input[type=checkbox]:checked").length;
+            nameVal = $("#nameInput").val();
+            emailVal = $("#emailInput").val();
+            locationVal = $("#locationInput").val();
+
+
+            if (!checkboxVal) {
+                alert("You must check at least one checkbox.");
+                //Show error messages here
+            }
+            else if (!nameVal) {
+                alert("You must input a name");
+            }
+            else if (!emailVal) {
+                alert("You must input an email");
+            }
+            else if (!locationVal) {
+                alert("You must input a location");
+            }
+
+            else {
+                //TODO
+                //Ajax POST to the api
+                $.ajax('POST').then(window.location.href = 'url')
+            }
+            return false;
+
+        });
+    });
+</script>
+
+</body>
+
+</html>
