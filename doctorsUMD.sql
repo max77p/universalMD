@@ -1,6 +1,0 @@
-DROP DATABASE IF EXISTS doctorsUMD;
-
-CREATE DATABASE doctorsUMD;
-
-USE doctorsUMD;
-
