@@ -9,10 +9,12 @@
     "express-handlebars": "^3.0.0",
     "mysql": "^2.16.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon -e js,handlebars ./server.js"
   },
   "repository": {
     "type": "git",
