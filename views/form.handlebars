@@ -1,5 +1,4 @@
-<form action="/api/data" method="POST">
-
+<form action="/">
     What's your name?
     <br>
     <input type="text" name="name" value="" id="nameInput">
@@ -40,19 +39,14 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         $('#reqTest').click(function (ev) {
-
             //prevent submit from submitting webform
             ev.preventDefault();
-
             //checking length of input fields
             checkboxVal = $("input[type=checkbox]:checked").length;
             nameVal = $("#nameInput").val();
             emailVal = $("#emailInput").val();
             locationVal = $("#locationInput").val();
-
-
             if (!checkboxVal) {
                 alert("You must check at least one checkbox.");
                 //Show error messages here
@@ -66,18 +60,12 @@
             else if (!locationVal) {
                 alert("You must input a location");
             }
-
             else {
                 //TODO
                 //Ajax POST to the api
                 $.ajax('POST').then(window.location.href = 'url')
             }
             return false;
-
         });
     });
 </script>
-
-</body>
-
-</html>
