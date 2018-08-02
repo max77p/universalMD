@@ -1,3 +1,23 @@
 var express=require("express");
 var router=express.Router();
-var 
+var umd = require("../models/umdModel.js");
+
+router.get("/",function(req,res){
+    umd.all(function(data){
+        console.log(data);
+        var hasObject = {
+            doctors: JSON.stringify(data)
+          };
+          console.log(hasObject);
+          res.render("index", hasObject);
+
+    });
+});
+
+
+router.post("/newpatient", function (req, res){
+    umd.
+
+})
+
+module.exports=router;
