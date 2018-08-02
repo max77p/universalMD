@@ -29,7 +29,7 @@ router.get("/register",function(req,res){
 /*===========================================posting data================================*/
 router.post("/api/patients",function(req,res){
     // burger.create(["burger_name"],[req.body.burger],function(result){
-        console.log(req.body.name);
+        console.log(req.body.location);
     // });
     res.redirect("/matchedDocs");
 });
