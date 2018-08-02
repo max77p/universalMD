@@ -8,64 +8,42 @@
     <br> What's your location?
     <br>
     <input type="text" name="location" value="" id="locationInput">
-    <br>
+    <br> Is the patient 13 and younger or over 13?
+    <select class="custom-select my-1 mr-sm-2" id="chosingAge">
+        <option selected>Choose...</option>
+        <option value="<13">13 and under</option>
+        <option value=">13">13 and over</option>
+    </select>
     <!-- one is required -->
+    <div class="symptomOption">
     What're your main symptoms?
     <br>
-
     <input type="checkbox" name="symptom1" value="Cough">Cough
     <br>
     <input type="checkbox" name="symptom2" value="Sore Throat">Sore Throat
     <br>
-    <input type="checkbox" name="symptom3" value="Fatigue">Fatigue
+    <input type="checkbox" name="symptom3" value="Headache">Headache12
     <br>
-    <input type="checkbox" name="symptom4" value="Fever">Fever
+    <input type="checkbox" name="symptom4" value="Fever">Fever13
     <br>
-
+    <input type="checkbox" name="symptom5" value="Toothache">Toothache2
+    <br>
+    <input type="checkbox" name="symptom6" value="Chest Pain">Chest Pain4
+    <br>
+    <input type="checkbox" name="symptom7" value="Seisure">Siesure5
+    <br>
+    <input type="checkbox" name="symptom8" value="Tummyache">Tummyache3
+    <br>
+    <input type="checkbox" name="symptom9" value="Breathing Problems">Breathing Problems4
+    <br>
+    <input type="checkbox" name="symptom10" value="Breathing Problems">Breathing Problems
+    <br>
     <br> Do you prefer a female or male doctor?
     <br>
-
     <input type="radio" name="gender" value="male" checked> Male
     <br>
     <input type="radio" name="gender" value="female"> Female
     <br>
-
-
+    </div>
     <input type="submit" value="Submit" id="reqTest">
-
-
 </form>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#reqTest').click(function (ev) {
-            //prevent submit from submitting webform
-            ev.preventDefault();
-            //checking length of input fields
-            checkboxVal = $("input[type=checkbox]:checked").length;
-            nameVal = $("#nameInput").val();
-            emailVal = $("#emailInput").val();
-            locationVal = $("#locationInput").val();
-            if (!checkboxVal) {
-                alert("You must check at least one checkbox.");
-                //Show error messages here
-            }
-            else if (!nameVal) {
-                alert("You must input a name");
-            }
-            else if (!emailVal) {
-                alert("You must input an email");
-            }
-            else if (!locationVal) {
-                alert("You must input a location");
-            }
-            else {
-                //TODO
-                //Ajax POST to the api
-                $.ajax('POST').then(window.location.href = 'url')
-            }
-            return false;
-        });
-    });
-</script>

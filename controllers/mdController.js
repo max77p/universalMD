@@ -24,4 +24,13 @@ router.get("/login",function(req,res){
 router.get("/register",function(req,res){
     res.render("register");
 });
+
+
+/*===========================================posting data================================*/
+router.post("/api/patients",function(req,res){
+    // burger.create(["burger_name"],[req.body.burger],function(result){
+        console.log(req.body.name);
+    // });
+    res.redirect("/matchedDocs");
+});
 module.exports=router;
