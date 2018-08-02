@@ -6,8 +6,8 @@ var umdCommands = {
             cb(res);
         });
      },
-    create: function (cols, vals, cb) {
-        orm.insertOne("appointments", cols, vals, function (res) {
+    createPatient: function (cols, vals, cb) {
+        orm.insertPatient("patients", cols, vals, function (res) {
             cb(res);
         });
     },

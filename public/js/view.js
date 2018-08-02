@@ -25,6 +25,7 @@ $('#reqTest').click(function (ev) {
     nameVal = $("#nameInput").val();
     emailVal = $("#emailInput").val();
     locationVal = $("#locationInput").val();
+    console.log(locationVal);
     if (!checkboxVal) {
         alert("You must check at least one checkbox.");
         //Show error messages here
@@ -46,9 +47,11 @@ $('#reqTest').click(function (ev) {
             name: $("#nameInput").val().trim(),
             email: $("#emailInput").val().trim(),
             location: $("#locationInput").val().trim(),
+            gender: document.querySelector('input[name="gender"]:checked').value,
             symptoms: symptomsArr
         };
 
+        console.log(newPatient);
         $.ajax("/api/patients", {
             type: "POST",
             data: newPatient

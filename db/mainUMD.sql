@@ -14,15 +14,11 @@ CREATE TABLE appointments(
 );
 
 CREATE TABLE patients(
-`name` VARCHAR (50) NOT NULL,
-`email` VARCHAR (25) NOT NULL,
-`location_city` VARCHAR (30) NOT NULL,
-`gender` VARCHAR(10) NOT NULL,
-`s1` VARCHAR (20) NULL,
-`s2` VARCHAR (20) NULL,
-`s3` VARCHAR (20) NULL,
-`s4` VARCHAR(20) NULL,
-`s5` VARCHAR(20) NULL
+`name` VARCHAR (50) NULL,
+`email` VARCHAR (25) NULL,
+`location` VARCHAR (30) NULL,
+`gender` VARCHAR(10) NULL,
+`symptoms` TEXT NULL
 );
 
 
