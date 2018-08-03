@@ -15,8 +15,8 @@ CREATE TABLE appointments(
 
 CREATE TABLE patients(
 `name` VARCHAR (50) NULL,
-`email` VARCHAR (25) NULL,
-`location` VARCHAR (30) NULL,
+`email` VARCHAR (100) NULL,
+`location` VARCHAR (100) NULL,
 `gender` VARCHAR(10) NULL,
 `symptoms` TEXT NULL
 );

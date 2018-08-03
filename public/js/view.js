@@ -48,7 +48,7 @@ $('#reqTest').click(function (ev) {
             email: $("#emailInput").val().trim(),
             location: $("#locationInput").val().trim(),
             gender: document.querySelector('input[name="gender"]:checked').value,
-            symptoms: symptomsArr
+            symptoms: symptomsArr.toString()
         };
 
         console.log(newPatient);

@@ -29,35 +29,31 @@ router.get("/register", function (req, res) {
 /*===========================================posting data================================*/
 router.post("/api/patients", function (req, res) {
     var tableArr = [];//col keys
-    var valArr = req.body.symptoms;//just the symptoms
-    var allvals=req.body;
+    var valArr = JSON.stringify(req.body.symptoms);//just the symptoms
+console.log(valArr);
+    var allvals=[];
     Object.keys(req.body).forEach(x => {
         tableArr.push(x);
-        allvals=req.body[x];
+        allvals.push(req.body[x]);
     });
     // var symptoms = JSON.stringify(req.body.symptoms);
     console.log("symptoms are " + valArr);
-    console.log(valArr);
-    // console.log(allvals);
+    // console.log(valArr);
+    console.log(allvals);
     // console.log(JSON.stringify(req.body.symptoms));
-    getPatientCols(valArr);
-    function getPatientCols(vals) {
-        var arr = [];
-        var lengthVal = vals.length; //lengh of symptoms
-        console.log(lengthVal);
-        // for(i=0;i<colsArr.length-1;i++){
-        //   console.log(colsArr[i]);
-        // }
-        // for (var i = 0; i < lengthCol - 1; i++) {
-        //     arr.push(colsArr[i]); //pushes keys up to symptoms
-        // }
-        // for (var i = 0; i < lengthVal; i++) {
-        //     arr.push("s" + (i + 1));
-        // }
-        // console.log(arr);
-    };
+    var arr = [];
+    getPatientCols(allvals,valArr);
 
-    umd.createPatient(tableArr, valArr, function (result) {
+    function getPatientCols(allval,vals) {
+        var stringwithqs;
+         for (var i = 0; i < allval.length - 1; i++) {
+            arr.push(`"${allval[i]}"`); //pushes keys up to symptoms
+        }
+        arr.push(valArr);
+        
+    };
+    console.log(arr);
+    umd.createPatient(tableArr, arr, function (result) {
         console.log(result);
     });
     res.redirect("/matchedDocs");

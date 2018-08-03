@@ -59,7 +59,7 @@ var orm = {
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function (err, result) {
+    connection.query(queryString, val, function (err, result) {
       if (err) {
         throw err;
       }
@@ -69,9 +69,8 @@ var orm = {
   },
   insertPatient: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
-    console.log(cols.toString());
-    console.log(vals);
-  // getPatientCols(cols,vals);
+    console.log("cols are: "+cols.toString());
+    console.log("vals are: "+vals);
     queryString += " (";
     queryString += cols.toString();
     queryString += ") ";
@@ -81,13 +80,12 @@ var orm = {
 
     console.log(queryString);
 
-    // connection.query(queryString, vals, function (err, result) {
-    //   if (err) {
-    //     throw err;
-    //   }
-
-    //   cb(result);
-    // });
+    connection.query(queryString, vals, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
   },
   // // An example of objColVals would be {name: panther, sleepy: true}
   updateOne: function (table, objColVals, condition, cb) {
