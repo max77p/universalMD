@@ -1,0 +1,125 @@
+p{
+  font-size: 16px;
+}
+
+#sidebar {
+    min-width: 15.6em;
+    max-width: 15.6em;
+    min-height: 100vh;
+    /* margin-left:-15.6em; */
+    position: absolute;
+    z-index: 10;
+    background-color: black;
+    background: #f8f8f8;
+    color: inherit;
+    transition: all 0.3s;
+}
+
+.sidebar-header {
+    /*sidebar padding for logo*/
+    padding: 3em;
+    text-align: center;
+    border-bottom: 1px #e5e5e5 solid;
+}
+
+#sidebar ul li a {
+    /*side bar style*/
+    padding: 0.625em;
+    font-size: 1.3em;
+    display: block;
+    text-align: left;
+    margin-left: 2em;
+}
+
+#sidebar ul li {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px #e5e5e5 solid;
+}
+
+#sidebar ul li a:hover {
+    /*color on hover*/
+    color: #4c8cd6
+}
+
+/*side bar styling*/
+
+#sidebar.active {
+    margin-left: 0em;
+    position: absolute;
+    top: 0;
+}
+
+@media screen and (max-width: 782px) {
+    #sidebar {
+        margin-left: -15.6em;
+        position: absolute;
+    }
+    .itemInnerMain {
+        margin-left: 0 !important;
+    }
+}
+
+.menuItems {
+    /*contains the menu items on side bar*/
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.itemSection {
+    border: 1px solid #e7e7e7;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 50em;
+    display: grid;
+    grid-template-columns: 12% 68% 20%;
+}
+
+.itemInnerMain {
+    /* float: right; */
+    margin-left: 15.6em;
+}
+
+/* .doctorSection {
+    margin-bottom: 12px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #98a3a4;
+} */
+
+.individDoctor{
+    margin-bottom: 12px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #98a3a4;
+}
+.individDoctor img{
+    height: 77px;
+    width: 77px;
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #98a3a4;
+}
+
+.individDoctor h4{
+    margin: 0 0 2px;
+    font-size: 16px;
+}
+
+.doctorSection a{
+    display: block;
+    margin: 10px 0 11px;
+}
+.doctorSection p{
+    overflow: hidden;
+    margin-bottom: 0;
+    line-height: 1.1;
+    padding-bottom: 2px;
+}
+
+.star-rating-count{
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #5e6868;
+    vertical-align: middle;
+}

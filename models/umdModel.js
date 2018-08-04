@@ -16,7 +16,5 @@ var umdCommands = {
             cb(res);
         });
     }
-
 };
-
 module.exports = umdCommands;

@@ -14,11 +14,22 @@ CREATE TABLE appointments(
 );
 
 CREATE TABLE patients(
-`name` VARCHAR (50) NULL,
-`email` VARCHAR (100) NULL,
-`location` VARCHAR (100) NULL,
-`gender` VARCHAR(10) NULL,
-`symptoms` TEXT NULL
+`name` VARCHAR (50) NOT NULL,
+`email` VARCHAR (100) NOT NULL,
+`location` VARCHAR (100) NOT NULL,
+`gender` VARCHAR(10) NOT NULL,
+`symptoms` TEXT NOT NULL
+);
+
+CREATE TABLE doctors(
+id INT (255) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+`name` VARCHAR (50) NOT NULL,
+`specialty` VARCHAR (25) NOT NULL,
+`location` VARCHAR (30) NOT NULL,
+`rating` FLOAT (2,1) NOT NULL,
+`e-mail` VARCHAR (50) NOT NULL,
+`contactNumber` INT (10) NOT NULL,
+`gender` VARCHAR(10) NULL
 );
 
 

@@ -61,6 +61,7 @@ $('#reqTest').click(function (ev) {
                 console.log(newPatient);
                 // Reload the page to get the updated list
                 // location.reload();
+                window.location="/dashboard";
             }
         );
     }
