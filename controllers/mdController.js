@@ -34,13 +34,66 @@ router.get("/dashboard", function (req, res) {
         query: category.name
     };
     res.render("dashboard", hasobject);
+    getDoctorAlgorithm(category.symptoms);
 });
 
-function getDoctorAlgorithm() {
-    let genPrac = ["fever", "headache", "skin irritations", "joint/muscle pain"];
-    let dentist = ["toothache", "broken tooth"];
-    let cardiologist = ["chest pain", "numbess"];
-    let neurologist = ["seisure", "migrains"];
+function getDoctorAlgorithm(choices) {
+    var choiceArr = choices.split(",");
+    console.log(choiceArr);
+    let symptomObj = {
+        genPrac: ["Fever", "Headache", "Skin Irritations", "Joint/muscle pain"],
+        dentist: ["Toothache", "Broken tooth"],
+        cardiologist: ["Chest Pain", "Numbness"],
+        neurologist: ["Seisure", "Migrains"]
+    }
+
+    let currSymp = function (checkGen, checkDent, checkCardio, checkNeuro) {
+        this.checkGen = {
+                "length": checkGen.length,
+                "value": 0
+            },
+            this.checkDent = {
+                "length": checkDent.length,
+                "value": 1
+            },
+            this.checkCardio = {
+                "length": checkCardio.length,
+                "value": 3
+            },
+            this.checkNeuro = {
+                "length": checkNeuro.length,
+                "value": 3
+            }
+    }
+    let largest = {
+        length: 0,
+        values: null
+    }
+
+
+    Object.keys(symptomObj).forEach(x => {
+        switch (x) {
+            case 'genPrac':
+                console.log(x);
+                checkGen = symptomObj[x].filter(y => choiceArr.includes(y));
+                break;
+            case 'dentist':
+                checkDent = symptomObj[x].filter(y => choiceArr.includes(y));
+                break;
+            case 'cardiologist':
+                checkCardio = symptomObj[x].filter(y => choiceArr.includes(y));
+                break;
+            case 'neurologist':
+                checkNeuro = symptomObj[x].filter(y => choiceArr.includes(y));
+                break;
+        }
+    })
+
+    //see which array is larger
+    var newpatient = new currSymp(checkGen, checkDent, checkCardio, checkNeuro);
+    console.log("++++++++++++++++");
+    console.log(newpatient);
+
 }
 
 /*===========================================posting data================================*/

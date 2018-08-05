@@ -26,11 +26,11 @@ id INT (255) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 `name` VARCHAR (50) NOT NULL,
 `specialty` VARCHAR (25) NOT NULL,
 `location` VARCHAR (30) NOT NULL,
-`rating` FLOAT (2,1) NOT NULL,
-`e-mail` VARCHAR (50) NOT NULL,
-`contactNumber` INT (10) NOT NULL,
+`rating` FLOAT (3,1) NOT NULL,
+`contactNumber` CHAR (10) NOT NULL,
 `gender` VARCHAR(10) NULL
 );
+
 
 
 
