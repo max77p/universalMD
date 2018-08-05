@@ -37,7 +37,17 @@ function objToSql(ob) {
 
 //helper function to create set
 var orm = {
-  all: function (tableInput, cb) {
+  allDoc: function (tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function (err, result) {
+      console.log(queryString);
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  specificPatient: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
       console.log(queryString);
@@ -69,8 +79,8 @@ var orm = {
   },
   insertPatient: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
-    console.log("cols are: "+cols.toString());
-    console.log("vals are: "+vals);
+    // console.log("cols are: "+cols.toString());
+    // console.log("vals are: "+vals);
     queryString += " (";
     queryString += cols.toString();
     queryString += ") ";

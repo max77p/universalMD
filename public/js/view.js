@@ -51,18 +51,14 @@ $('#reqTest').click(function (ev) {
             symptoms: symptomsArr.toString()
         };
 
-        console.log(newPatient);
-        $.ajax("/api/patients", {
+        // console.log(newPatient);
+        $.ajax("/patients", {
             type: "POST",
             data: newPatient
-        }).then(
-            function () {
-                console.log("created new Patient");
-                console.log(newPatient);
-                // Reload the page to get the updated list
-                // location.reload();
-                window.location="/dashboard";
-            }
-        );
+        }).then(function () {
+            console.log("created new Patient");
+            console.log(newPatient);
+            window.location = "/dashboard";
+        });
     }
 });

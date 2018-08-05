@@ -1,8 +1,19 @@
 var express = require("express");
 var bodyParser=require("body-parser");
+var session = require('express-session');
+
+
 
 var app=express();
 var PORT = process.env.Port || 8080;
+
+// use session middleware
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+}));
 
 app.use(express.static("public"));
 

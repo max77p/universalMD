@@ -2,7 +2,7 @@ var orm = require("../config/orm.js");
 
 var umdCommands = {
     all: function (cb) {
-        orm.all("appointments", function (res) {
+        orm.allDoc("appointments", function (res) {
             cb(res);
         });
      },

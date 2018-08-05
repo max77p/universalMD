@@ -11,6 +11,7 @@ router.get("/", function (req, res) {
         console.log(hasObject);
         res.render("index");
     });
+
 });
 
 router.get("/form", function (req, res) {
@@ -25,23 +26,35 @@ router.get("/register", function (req, res) {
     res.render("register");
 });
 
+// function redirect1(el){
 router.get("/dashboard", function (req, res) {
-    res.render("dashboard");
+    var category = req.session.patients;
+    console.log("test: " + JSON.stringify(category.symptoms));
+    var hasobject = {
+        query: category.name
+    };
+    res.render("dashboard", hasobject);
 });
 
+function getDoctorAlgorithm() {
+    let genPrac = ["fever", "headache", "skin irritations", "joint/muscle pain"];
+    let dentist = ["toothache", "broken tooth"];
+    let cardiologist = ["chest pain", "numbess"];
+    let neurologist = ["seisure", "migrains"];
+}
 
 /*===========================================posting data================================*/
-router.post("/api/patients", function (req, res) {
+router.post("/patients", function (req, res) {
     var tableArr = []; //col keys
     var valArr = JSON.stringify(req.body.symptoms); //just the symptoms
-    console.log(valArr);
+    // console.log(valArr);
     var allvals = [];
     Object.keys(req.body).forEach(x => {
         tableArr.push(x);
         allvals.push(req.body[x]);
     });
     console.log("symptoms are " + valArr);
-    console.log(allvals);
+    // console.log(allvals);
     var arr = [];
     getPatientCols(allvals, valArr);
 
@@ -51,10 +64,15 @@ router.post("/api/patients", function (req, res) {
         }
         arr.push(valArr);
     };
-    console.log(arr);
+    // console.log(arr);
     umd.createPatient(tableArr, arr, function (result) {
         console.log(result);
     });
+    req.session.patients = req.body;
     res.redirect("/dashboard");
 });
+
+
+
+
 module.exports = router;
