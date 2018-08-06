@@ -30,37 +30,52 @@ router.get("/register", function (req, res) {
 router.get("/dashboard", function (req, res) {
     var category = req.session.patients;
     console.log("test: " + JSON.stringify(category.symptoms));
-    var docObject = [];
+    var docObject = {};
     var x = getDoctorAlgorithm(category.symptoms);
     console.log("-------------");
     console.log(x);
-    Object.keys(x).forEach(a=>{
-        switch(a){
+    Object.keys(x).forEach(a => {
+        switch (a) {
             case 'checkGen':
-            docObject['G.P']=x[a];
-            break;
+                docObject['G.P'] = x[a];
+                break;
             case 'checkDent':
-            docObject['Dentist']=x[a];
-            break;
+                docObject['Dentist'] = x[a];
+                break;
             case 'checkCardio':
-            docObject['Cardiologist']=x[a];
-            break;
+                docObject['Cardiologist'] = x[a];
+                break;
             case 'checkNeuro':
-            docObject['Neuorologist']=x[a];
-            break;
+                docObject['Neuorologist'] = x[a];
+                break;
         }
     });
-
-    umd.matchDocs(tableArr, arr, function (result) {
-        console.log(result);
+    var vals = "(";
+    var itemsprocessed = 0;
+    Object.keys(docObject).forEach(x => {
+        console.log(x);
+        vals += `"${x}"` + ",";
+        // itemsprocessed++;
+        // if (itemsprocessed == docObject.length) {
+        //     cb();
+        // }
     });
+    // console.log(vals);
+    // console.log(vals.length);
 
-    renderDocs={
+        var val2 = vals.slice(0, -1) + ")";
+        console.log(val2);
+        umd.matchDocs(val2, function (data) {
+            console.log(data);
+            var renderDocs = {
+                doctors: data
+            }
+            res.render("dashboard", renderDocs);
+        });
         
-    }
-    console.log(docObject);
+        console.log(docObject);
+        
 
-    res.render("dashboard");
 });
 
 var getDoctorAlgorithm = function (choices) {
@@ -75,21 +90,25 @@ var getDoctorAlgorithm = function (choices) {
 
     let currSymp = function (checkGen, checkDent, checkCardio, checkNeuro) {
         this.checkGen = {
+                "name": "G.P",
                 "length": checkGen.length,
                 "value": 0,
                 "field": checkGen
             },
             this.checkDent = {
+                "name": "Dentist",
                 "length": checkDent.length,
                 "value": 1,
                 "field": checkDent
             },
             this.checkCardio = {
+                "name": "Cardiologist",
                 "length": checkCardio.length,
                 "value": 3,
                 "field": checkCardio
             },
             this.checkNeuro = {
+                "name": "Neuorologist",
                 "length": checkNeuro.length,
                 "value": 3,
                 "field": checkNeuro

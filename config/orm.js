@@ -54,13 +54,13 @@ var orm = {
     queryString +=value+";";
 
     console.log(queryString);
-    // connection.query(queryString, function (err, result) {
-    //   console.log(queryString);
-    //   if (err) {
-    //     throw err;
-    //   }
-    //   cb(result);
-    // });
+    connection.query(queryString, function (err, result) {
+      console.log(queryString);
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
   },
   specificPatient: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
