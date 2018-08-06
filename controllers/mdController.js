@@ -30,46 +30,71 @@ router.get("/register", function (req, res) {
 router.get("/dashboard", function (req, res) {
     var category = req.session.patients;
     console.log("test: " + JSON.stringify(category.symptoms));
-    var hasobject = {
-        query: category.name
-    };
-    res.render("dashboard", hasobject);
-    getDoctorAlgorithm(category.symptoms);
+    var docObject = [];
+    var x = getDoctorAlgorithm(category.symptoms);
+    console.log("-------------");
+    console.log(x);
+    Object.keys(x).forEach(a=>{
+        switch(a){
+            case 'checkGen':
+            docObject['G.P']=x[a];
+            break;
+            case 'checkDent':
+            docObject['Dentist']=x[a];
+            break;
+            case 'checkCardio':
+            docObject['Cardiologist']=x[a];
+            break;
+            case 'checkNeuro':
+            docObject['Neuorologist']=x[a];
+            break;
+        }
+    });
+
+    umd.matchDocs(tableArr, arr, function (result) {
+        console.log(result);
+    });
+
+    renderDocs={
+        
+    }
+    console.log(docObject);
+
+    res.render("dashboard");
 });
 
-function getDoctorAlgorithm(choices) {
+var getDoctorAlgorithm = function (choices) {
     var choiceArr = choices.split(",");
     console.log(choiceArr);
     let symptomObj = {
-        genPrac: ["Fever", "Headache", "Skin Irritations", "Joint/muscle pain"],
-        dentist: ["Toothache", "Broken tooth"],
+        genPrac: ["Fever", "Headache", "Skin Irritations", "Joint/Muscle Pain"],
+        dentist: ["Toothache", "Broken Tooth"],
         cardiologist: ["Chest Pain", "Numbness"],
-        neurologist: ["Seisure", "Migrains"]
+        neuorologist: ["Seisure", "Migrains"]
     }
 
     let currSymp = function (checkGen, checkDent, checkCardio, checkNeuro) {
         this.checkGen = {
                 "length": checkGen.length,
-                "value": 0
+                "value": 0,
+                "field": checkGen
             },
             this.checkDent = {
                 "length": checkDent.length,
-                "value": 1
+                "value": 1,
+                "field": checkDent
             },
             this.checkCardio = {
                 "length": checkCardio.length,
-                "value": 3
+                "value": 3,
+                "field": checkCardio
             },
             this.checkNeuro = {
                 "length": checkNeuro.length,
-                "value": 3
+                "value": 3,
+                "field": checkNeuro
             }
     }
-    let largest = {
-        length: 0,
-        values: null
-    }
-
 
     Object.keys(symptomObj).forEach(x => {
         switch (x) {
@@ -83,7 +108,7 @@ function getDoctorAlgorithm(choices) {
             case 'cardiologist':
                 checkCardio = symptomObj[x].filter(y => choiceArr.includes(y));
                 break;
-            case 'neurologist':
+            case 'neuorologist':
                 checkNeuro = symptomObj[x].filter(y => choiceArr.includes(y));
                 break;
         }
@@ -92,8 +117,14 @@ function getDoctorAlgorithm(choices) {
     //see which array is larger
     var newpatient = new currSymp(checkGen, checkDent, checkCardio, checkNeuro);
     console.log("++++++++++++++++");
-    console.log(newpatient);
+    // console.log(newpatient);
 
+    Object.keys(newpatient).forEach(x => {
+        if (newpatient[x].length == 0) {
+            delete newpatient[x];
+        }
+    });
+    return newpatient;
 }
 
 /*===========================================posting data================================*/

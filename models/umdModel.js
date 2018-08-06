@@ -6,6 +6,11 @@ var umdCommands = {
             cb(res);
         });
      },
+     matchDocs: function (vals,cb) {
+        orm.matchDocs("doctors",vals, function (res) {
+            cb(res);
+        });
+     },
     createPatient: function (cols, vals, cb) {
         orm.insertPatient("patients", cols, vals, function (res) {
             cb(res);

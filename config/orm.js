@@ -47,6 +47,21 @@ var orm = {
       cb(result);
     });
   },
+  matchDocs: function (tableInput,value, cb) {
+    var queryString = "SELECT * FROM ";
+    queryString += tableInput;
+    queryString +=" WHERE specialty in ";
+    queryString +=value+";";
+
+    console.log(queryString);
+    // connection.query(queryString, function (err, result) {
+    //   console.log(queryString);
+    //   if (err) {
+    //     throw err;
+    //   }
+    //   cb(result);
+    // });
+  },
   specificPatient: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
@@ -57,26 +72,26 @@ var orm = {
       cb(result);
     });
   },
-  insertOne: function (table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+  // insertOne: function (table, cols, vals, cb) {
+  //   var queryString = "INSERT INTO " + table;
 
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
+  //   queryString += " (";
+  //   queryString += cols.toString();
+  //   queryString += ") ";
+  //   queryString += "VALUES (";
+  //   queryString += printQuestionMarks(vals.length);
+  //   queryString += ") ";
 
-    console.log(queryString);
+  //   console.log(queryString);
 
-    connection.query(queryString, val, function (err, result) {
-      if (err) {
-        throw err;
-      }
+  //   connection.query(queryString, val, function (err, result) {
+  //     if (err) {
+  //       throw err;
+  //     }
 
-      cb(result);
-    });
-  },
+  //     cb(result);
+  //   });
+  // },
   insertPatient: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
     // console.log("cols are: "+cols.toString());
