@@ -58,39 +58,51 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 doctorSection">
-                    <a href="/best-doctors/on/toronto/family-gp/" class="home-specialties-name">
-                        <h3>Family Doctor / G.P.</h3>
-                        {{!-- <small>View All</small> --}}
-                    </a>
-                    <div class="individDoctor">
-                        <a href="/doctor-ratings/45045/Dr-Gary-Weinstein-Toronto-ON.html" class="search-item-doctor-link">
-                            <img class="doctor-image" src="//www.ratemds.com/static/img/doctors/doctor-male.png_thumbs/v1_at_77x77.jpg" alt="Dr. Gary Weinstein">
-                            <h4 class="search-item-doctor-name">Dr. Gary Weinstein</h4>
-                        </a>
-                        <span class="star-rating" title="4.75">
-                            <span class="stars">
-                                <span class="starhalf"></span>
-                                <span class="starselected"></span>
-                                <span class="starselected"></span>
-                                <span class="starselected"></span>
-                                <span class="starselected"></span>
-                            </span>
-                        </span>
-                        <div class="star-rating-count">
-                            117 reviews
-                        </div>
-                        <p>"Hi Dr Weinstein s email is drgaryweinsteing@gmail.com. He is one of ..."</p>
+                    <div class="pillSection">
+                        <ul class="nav nav-pills nav-fill">
+                            {{#each doci}}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">{{this}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                        {{!-- <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                        </ul> --}}
                     </div>
+                    {{#each doctors}}
+                        <a href="/best-doctors/on/toronto/family-gp/" class="home-specialties-name">
+                            <h3>{{this.specialty}}</h3>
+                            {{!-- <small>View All</small> --}}
+                        </a>
+                        <div class="individDoctor" data-name="{{this.specialty}}">
+                            <a href="/doctor-ratings/45045/Dr-Gary-Weinstein-Toronto-ON.html" class="search-item-doctor-link">
+                                <img class="doctor-image" src="//www.ratemds.com/static/img/doctors/doctor-male.png_thumbs/v1_at_77x77.jpg" alt="Dr. Gary Weinstein">
+                                <h4 class="search-item-doctor-name">{{this.name}}</h4>
+                                <p>{{this.gender}}</p>
+                            </a>
+                            <span class="star-rating" title="{{this.rating}}">
+                                <span class="stars">
+                                    <span class="starhalf"></span>
+                                    <span class="starselected"></span>
+                                    <span class="starselected"></span>
+                                    <span class="starselected"></span>
+                                    <span class="starselected"></span>
+                                </span>
+                            </span>
+                            <div class="star-rating-count">
+                                117 reviews
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
                 <div class="col-md-6">
-                    {{#each doctors}}
-                            <div class="eaten-burger-list">
-                                <p>{{this.id}}. {{this.name}}</p>
-                                <p>{{this.id}}. {{this.specialty}}</p>
-                            </div>
-                    {{/each}}
+                    <h1>test</h2>
                 </div>
             </div>
         </div>
     </section>
 </section>
+
+<script src="js/dashview.js" type="text/javascript"></script>

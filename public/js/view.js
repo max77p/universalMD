@@ -14,7 +14,6 @@ $('#chosingAge').change(function (e) {
     }
 });
 
-
 var checkboxVal1 = $("select option:selected").length;
 $('#reqTest').click(function (ev) {
     //prevent submit from submitting webform
@@ -62,3 +61,8 @@ $('#reqTest').click(function (ev) {
         });
     }
 });
+
+
+   
+ 
+        

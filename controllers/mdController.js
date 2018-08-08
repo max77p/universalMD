@@ -4,10 +4,11 @@ var umd = require("../models/umdModel.js");
 
 router.get("/", function (req, res) {
     umd.all(function (data) {
-        console.log(data);
+        // console.log(data);
         var hasObject = {
             doctors: JSON.stringify(data)
         };
+
         console.log(hasObject);
         res.render("index");
     });
@@ -51,30 +52,32 @@ router.get("/dashboard", function (req, res) {
         }
     });
     var vals = "(";
-    var itemsprocessed = 0;
+    var itemsprocessed = [];
     Object.keys(docObject).forEach(x => {
         console.log(x);
+        itemsprocessed.push(x);
         vals += `"${x}"` + ",";
         // itemsprocessed++;
         // if (itemsprocessed == docObject.length) {
         //     cb();
         // }
     });
-    // console.log(vals);
-    // console.log(vals.length);
-
-        var val2 = vals.slice(0, -1) + ")";
-        console.log(val2);
-        umd.matchDocs(val2, function (data) {
-            console.log(data);
-            var renderDocs = {
-                doctors: data
-            }
-            res.render("dashboard", renderDocs);
-        });
+    var val2 = vals.slice(0, -1) + ")";
+    console.log(val2);
+    //    res.json(docObject);
+    umd.matchDocs(val2, function (data) {
         
-        console.log(docObject);
-        
+        var renderDocs = {
+            doctors: data,
+            doci:itemsprocessed
+        }
+        // console.log(renderDocs.doctors);
+        console.log(renderDocs.doci);
+        // itemsprocessed=[];
+        res.render("dashboard", renderDocs);
+        itemsprocessed=[];
+    });
+    console.log(docObject);
 
 });
 
@@ -174,8 +177,6 @@ router.post("/patients", function (req, res) {
     req.session.patients = req.body;
     res.redirect("/dashboard");
 });
-
-
 
 
 module.exports = router;
