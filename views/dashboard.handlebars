@@ -59,10 +59,11 @@
             <div class="row">
                 <div class="col-md-6 doctorSection">
                     <div class="pillSection">
+                        <h1>Please click a button to view your doctors</h1>
                         <ul class="nav nav-pills nav-fill">
                             {{#each doci}}
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">{{this}}</a>
+                            <li class="nav-item" data-name="{{this}}">
+                                <a class="nav-link" href="#">{{this}}</a>
                             </li>
                             {{/each}}
                         </ul>
