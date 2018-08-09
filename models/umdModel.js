@@ -16,6 +16,11 @@ var umdCommands = {
             cb(res);
         });
     },
+    createChildPatient: function (cols,cb) {
+        orm.insertChildPatient("patients", cols,function (res) {
+            cb(res);
+        });
+    },
     update: function (objColVals, condition,cb) {
         orm.updateOne("appointments", objColVals, condition, function (res) {
             cb(res);

@@ -5,11 +5,11 @@ var umd = require("../models/umdModel.js");
 router.get("/", function (req, res) {
     umd.all(function (data) {
         // console.log(data);
-        var hasObject = {
-            doctors: JSON.stringify(data)
-        };
+        // var hasObject = {
+        //     doctors: JSON.stringify(data)
+        // };
 
-        console.log(hasObject);
+        // console.log(hasObject);
         res.render("index");
     });
 
@@ -28,7 +28,9 @@ router.get("/register", function (req, res) {
 });
 
 // function redirect1(el){
-router.get("/dashboard", function (req, res) {
+router.get("/dashboard/:name", function (req, res) {
+    var name=req.params;
+    console.log(name);
     var category = req.session.patients;
     console.log("test: " + JSON.stringify(category.symptoms));
     var docObject = {};
@@ -171,11 +173,12 @@ router.post("/patients", function (req, res) {
         arr.push(valArr);
     };
     // console.log(arr);
+    
     umd.createPatient(tableArr, arr, function (result) {
         console.log(result);
     });
     req.session.patients = req.body;
-    res.redirect("/dashboard");
+    res.redirect("/dashboard/"+req.body.name);
 });
 
 

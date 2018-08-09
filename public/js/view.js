@@ -25,7 +25,8 @@ $('#reqTest').click(function (ev) {
     emailVal = $("#emailInput").val();
     locationVal = $("#locationInput").val();
     console.log(locationVal);
-    if (!checkboxVal) {
+
+    if (!checkboxVal && $('#chosingAge').val() === ">13") {
         alert("You must check at least one checkbox.");
         //Show error messages here
     } else if (!nameVal) {
@@ -57,12 +58,7 @@ $('#reqTest').click(function (ev) {
         }).then(function () {
             console.log("created new Patient");
             console.log(newPatient);
-            window.location = "/dashboard";
+            window.location = "/dashboard/" + newPatient.name;
         });
     }
 });
-
-
-   
- 
-        

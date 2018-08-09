@@ -62,36 +62,6 @@ var orm = {
       cb(result);
     });
   },
-  specificPatient: function (tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function (err, result) {
-      console.log(queryString);
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
-  // insertOne: function (table, cols, vals, cb) {
-  //   var queryString = "INSERT INTO " + table;
-
-  //   queryString += " (";
-  //   queryString += cols.toString();
-  //   queryString += ") ";
-  //   queryString += "VALUES (";
-  //   queryString += printQuestionMarks(vals.length);
-  //   queryString += ") ";
-
-  //   console.log(queryString);
-
-  //   connection.query(queryString, val, function (err, result) {
-  //     if (err) {
-  //       throw err;
-  //     }
-
-  //     cb(result);
-  //   });
-  // },
   insertPatient: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
     // console.log("cols are: "+cols.toString());
@@ -111,6 +81,26 @@ var orm = {
       }
       cb(result);
     });
+  },
+  insertChildPatient: function (table, cols, vals, cb) {
+    var queryString = "INSERT INTO " + table;
+    // console.log("cols are: "+cols.toString());
+    // console.log("vals are: "+vals);
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += printQuestionMarks(vals.length);
+    queryString += ") ";
+
+    console.log(queryString);
+
+    // connection.query(queryString, vals, function (err, result) {
+    //   if (err) {
+    //     throw err;
+    //   }
+    //   cb(result);
+    // });
   },
   // // An example of objColVals would be {name: panther, sleepy: true}
   updateOne: function (table, objColVals, condition, cb) {

@@ -80,17 +80,12 @@ p{
     /* float: right; */
     margin-left: 15.6em;
 }
-
-/* .doctorSection {
-    margin-bottom: 12px;
-    padding-bottom: 13px;
-    border-bottom: 1px solid #98a3a4;
-} */
-
 .individDoctor{
     margin-bottom: 12px;
     padding-bottom: 13px;
     border-bottom: 1px solid #98a3a4;
+    padding-left:1em;
+    padding-top:.5em;
 }
 .individDoctor img{
     height: 77px;
@@ -122,4 +117,48 @@ p{
     font-weight: 400;
     color: #5e6868;
     vertical-align: middle;
+}
+
+.menuItems{
+    padding:0;
+    background-color:black;
+}
+.menuItems a{
+    color:white;
+}
+
+.dashboardHead{
+    color: #fff !important;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.topNavStyle{
+    background-color: rgb(6, 217, 149) !important;
+}
+#navbarSupportedContent{
+    display:flex;
+}
+
+.mainDoctors{
+    height: 60%;
+    /* height: 20em; */
+    overflow: scroll;
+}
+
+.boxShadow{
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.54);
+-moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.54);
+box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.54);
+}
+
+.resultHead{
+    text-align:center;
+}
+
+.navBtnStyle{
+    color: black;
+}
+.navBtnHead{
+    padding:0 1em 0 1em;
 }
